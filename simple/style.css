@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/* general CSS */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Open Sans", sans-serif;
+  background: hsl(206, 33%, 96%);
+}
+
+a{text-decoration: none;}
+li{list-style: none;}
+
+/* nav */
+nav{
+  background:  #fff;
+  height: 3em;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.nav-center{
+  width: 80vw;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-center h4{
+  color: hsl(205, 78%, 60%);
+}
+.nav-links{
+  display: flex;
+}
+nav a{
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 1rem;
+  color: hsl(205, 86%, 17%);
+}
+nav a:hover{
+  color: hsl(205, 78%, 60%); 
+}
+main{
+  min-height: calc(100vh - 3em);
+  display: grid;
+  place-items: center;
+}
+.container{
+  width: 80vw;
+  max-width: 620px;
+  height: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 0.55rem;
+  position: relative;
+}
+
+.container h2{
+  background: #232528;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+  margin-bottom: 2.5rem;
+}
+.color{
+  letter-spacing: 0.1rem;
+}
+
+.btn{
+  position: absolute; top: .9rem;
+  font-family: "Open Sans", sans-serif;
+  background: hsl(205, 78%, 60%); 
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s linear;  
+}
+.btn:hover{
+  background: hsl(205, 78%, 73%); 
+}
+.btn-simple{
+  right: 1rem;
+}
+.btn-hex{
+  right: 6rem;
+}

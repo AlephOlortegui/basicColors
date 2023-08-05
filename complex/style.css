@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/* global */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: "Open Sans", sans-serif;
+  background: hsl(206, 33%, 96%);
+}
+a{text-decoration: none;}
+li{list-style: none;}
+
+/* nav */
+nav{
+  background: #fff;
+  height: 3em;
+  display: grid;
+  place-items: center;
+  box-shadow: 0px 5px 15px rgba(0,0,0,.2);
+}
+.nav-center{
+  width: 80vw;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-center h4{
+  color: hsl(205, 78%, 60%);
+}
+.nav-links{
+  display: flex;
+}
+nav a{
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 1rem;
+  color: hsl(205, 86%, 17%);
+}
+nav a:hover{
+  color: hsl(205, 78%, 60%); 
+}
+/* main */
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+/* container */
+.container {
+  width: 480px;
+  background: #fff;
+  border-radius: 1em;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+.title {
+  text-align: center;
+  user-select: none;
+}
+
+/* alert */
+.message.alert {
+  color: #664d03;
+  background-color: #fff3cd;
+  border: 1px solid #ffecb5;
+  border-radius: 0.25rem;
+  padding: .5rem;
+  width: 80%;
+  margin: 1rem auto 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.message span {
+  display: inline-block;
+  margin: 0 .4rem;
+  font-size: 12px;
+}
+
+/* board */
+.board {
+  width: 80%;
+  margin: 1rem auto;
+  height: 9em;
+  background-color: #222;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 0px 8px #ccc;
+          box-shadow: 0px 0px 8px #ccc;
+}
+/* switch */
+.switch {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+#checkbox {
+  cursor: pointer;
+  width: 80px;
+  height: 40px;
+  -webkit-appearance: none;
+  background-color: #f1f5f8;
+  outline: none;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  position: relative;
+}
+
+#checkbox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #49a6e9; ;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+#checkbox:checked {
+  background-color: #c9ddfa;
+}
+#checkbox:checked::before {
+  left: 40px;
+}
+
+/* form */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.control form {
+  width: 210px;
+}
+/* submit btn */
+.control form button.cta {
+  height: 40px;
+  color: #fff;
+  width: 100%;
+  margin-top: 1.2rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  letter-spacing: 0.1rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  background-color: #2c7cf5;
+  cursor: pointer;
+  -webkit-transition: background-color .5 ease-in;
+  transition: background-color .5 ease-in;
+}
+
+.control form button.cta:hover {
+  background-color: #6ba0f0;
+}
+
+/* results */
+.control .results {
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+/* form control */
+.form-control {
+  position: relative;
+  border-bottom: 2px solid #d9d9d9;
+  height: 45px;
+  opacity: 0;
+    -webkit-animation: fadeIn .5s forwards ease-in;
+            animation: fadeIn .5s forwards ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1; }
+}
+
+.form-control:not(.hexControl) {
+  display: inline-block;
+  width: 32%;
+}
+.form-control input {
+  font-size: 1rem;
+  color: #555;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.form-control input:not(.rgbf) {
+  padding: .2rem .7rem;
+}
+.form-control h4 {
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: .7rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #999;
+  font-size: 17px;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.form-control::after, .form-control::before {
+  content: '';
+  width: 0;
+}
+.form-control::after { right: 50%; }
+.form-control::before { left: 50%; }
+
+.d-none {
+  display: none !important;
+}

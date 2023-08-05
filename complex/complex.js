@@ -47,10 +47,18 @@ const setAlert = (msm) => {
 const handleToRGB = () => { 
   let y = checkHash(hexVal.value.toLowerCase().trim())
   console.log(y)
+  // 3.4
+  let len = y.length;
+  let rgx6 = /[a-f\d]{6}/ig; // Check correct hex value, let hex = /[a-f0-9]{6}/ig;
+  let rgx3 = /[a-f\d]{3}/ig;
 
   /* 3.3 form validation */
   if(!y){
     setAlert("the entry can't be empty");
+  }
+  /* 3.4 what if they success */
+  else if((len === 3 && rgx3.test(y)) || (len === 6 && rgx6.test(y))){
+    console.log('success')
   }
   // or if the user types anything else
   else{

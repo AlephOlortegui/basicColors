@@ -10,6 +10,8 @@ const cta = document.querySelector(".cta")
 let booleanControl = true; // true means convert to RGB otherwise convert to HEx
 //3.2 get our hexVal
 let hexVal = document.getElementById('hexVal');
+//3.3 setAlert
+let message = document.querySelector('.message');
 
 const focusFx = (i) => { i.parentNode.classList.add('focus') }
 const blurFx = (i) => { (!i.value) && i.parentNode.classList.remove('focus') }
@@ -31,9 +33,31 @@ const checkHash = (val) => {
   return val
 }
 
+/* 3.3.1. setAlert */
+const setAlert = (msm) => {
+  message.innerHTML = `<span>${msm}</span><span>X</span>`;
+  message.classList.add('alert');
+
+  message.addEventListener('click',()=>{
+      message.innerHTML = null;
+      message.classList.remove('alert');
+  })
+}
+
 const handleToRGB = () => { 
   let y = checkHash(hexVal.value.toLowerCase().trim())
   console.log(y)
+
+  /* 3.3 form validation */
+  if(!y){
+    setAlert("the entry can't be empty");
+  }
+  // or if the user types anything else
+  else{
+    hexVal.value = ''
+    setAlert("Oops! something went wrong with the given value");
+    blurFx(hexVal)
+  }
 }
 
 const handleToHex = () => { 

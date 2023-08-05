@@ -222,12 +222,28 @@ main {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
+/* Js focus class */
+.form-control.focus h4 {
+  top: -6px;
+  font-size: 12px;
+}
 .form-control::after, .form-control::before {
   content: '';
   width: 0;
+  /*JS focus class*/
+  height: 2px;
+  background-color: #3185fa;
+  position: absolute;
+  bottom: -2px;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .form-control::after { right: 50%; }
 .form-control::before { left: 50%; }
+/*JS focus class*/
+.form-control.focus::after, .form-control.focus::before {
+  width: 50%;
+}
 
 .d-none {
   display: none !important;

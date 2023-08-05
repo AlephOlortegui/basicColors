@@ -135,9 +135,41 @@ const handleToRGB = () => {
   }
 }
 
+/* step 5 */
 const handleToHex = () => { 
-  console.log('handle to Hex')
- }
+  let arrRGB = []
+  // to break forEach we need try and catch
+  try {
+    inputs.forEach(i => {
+      let rgx = /[a-z]/gi;
+      // validation - make sure we are working with RGB inputs
+      if(i.id !== 'hexVal'){
+        console.log(i)
+        if(rgx.test(i.value)){
+          //console.log(i.value, argx.test(i.value))
+          throw "Only numbers allowed" // break
+        }
+        else if(!i.value || i.value>255 || i.value<0){
+          throw "Please Check the values"
+        }
+        else{
+            arrRGB.push(i.value)
+        }
+      }
+    })
+  } catch (e) {
+    setAlert(e)
+  }
+  finally{
+    inputs.forEach(i=> {
+        i.value = '';
+        blurFx(i)
+    })
+  }
+  if(arrRGB.length === 3){
+    console.log('succeed')
+  }
+}
 
 // 3.1 CTA button
 cta.addEventListener('click', (e)=>{

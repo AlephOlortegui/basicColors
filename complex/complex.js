@@ -31,6 +31,17 @@ inputs.forEach(i => {
 // 1b: Toggle
 checkbox.addEventListener('click', ()=>{
   controlForm.forEach(i => i.classList.toggle('d-none'))
+  /* Step 4 */
+  booleanControl = !booleanControl;
+    if(booleanControl){
+      // from convertToRGB removing "R-" = slice(2)
+        let sliceR = curr_R.textContent.slice(2);
+        let sliceG = curr_G.textContent.slice(2);
+        let sliceB = curr_B.textContent.slice(2);
+        result.textContent =  `rgb(${sliceR},${sliceG},${sliceB})`;
+    }else{
+        result.textContent = `${current_hexVal.textContent}`;
+    }
 })
 
 /* 3.2 */

@@ -8,6 +8,8 @@ const inputs = document.querySelectorAll('.control-input');
 /*3 third */
 const cta = document.querySelector(".cta")
 let booleanControl = true; // true means convert to RGB otherwise convert to HEx
+//3.2 get our hexVal
+let hexVal = document.getElementById('hexVal');
 
 const focusFx = (i) => { i.parentNode.classList.add('focus') }
 const blurFx = (i) => { (!i.value) && i.parentNode.classList.remove('focus') }
@@ -22,17 +24,25 @@ checkbox.addEventListener('click', ()=>{
   controlForm.forEach(i => i.classList.toggle('d-none'))
 })
 
+/* 3.2 */
+const checkHash = (val) => { 
+  let hash = /#/; //yes, sorry regex
+  if(hash.test(val)) val = val.slice(1) //or = val.replace(hash,"")
+  return val
+}
+
 const handleToRGB = () => { 
-  console.log('handle to RGB')
- }
+  let y = checkHash(hexVal.value.toLowerCase().trim())
+  console.log(y)
+}
 
 const handleToHex = () => { 
   console.log('handle to Hex')
  }
 
 // 3.1 CTA button
-cta.addEventListener('submit', (e)=>{
-  e.preventDefault()
+cta.addEventListener('click', (e)=>{
+  e.preventDefault();
   if(booleanControl) handleToRGB()
   else handleToHex()
 })

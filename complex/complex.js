@@ -135,6 +135,31 @@ const handleToRGB = () => {
   }
 }
 
+/* step 5 B */
+const convertToHEX = (arrRGB) => {
+  let myArr = []
+  arrRGB.forEach(i =>{
+      let q = Math.floor(i/16); //quotient
+      let r = i%16; //remainder
+      myArr.push(q,r)
+  })
+  myArr.forEach((y,index) =>{
+    switch(y){
+        case 10 : myArr[index] = 'A'; break;
+        case 11 : myArr[index] = 'B'; break;
+        case 12 : myArr[index] = 'C'; break;
+        case 13 : myArr[index] = 'D'; break;
+        case 14 : myArr[index] = 'E'; break;
+        case 15 : myArr[index] = 'F'; break;
+        default :   break;
+    }
+  });
+  //Finally the DOM
+  board.style.backgroundColor = `#${myArr.join('')}`;
+  result.textContent = `#${myArr.join('')}`;
+  current_hexVal.textContent = `#${myArr.join('')}`;
+}
+
 /* step 5 */
 const handleToHex = () => { 
   let arrRGB = []
@@ -168,6 +193,11 @@ const handleToHex = () => {
   }
   if(arrRGB.length === 3){
     console.log('succeed')
+    // step 5B
+    convertToHEX(arrRGB)
+    curr_R.textContent = `R-${arrRGB[0]}`;
+    curr_G.textContent = `G-${arrRGB[1]}`;
+    curr_B.textContent = `B-${arrRGB[2]}`;
   }
 }
 

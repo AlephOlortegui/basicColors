@@ -44,6 +44,44 @@ const setAlert = (msm) => {
   })
 }
 
+/* 3.4 */
+const convertToRGB = (y,len) => { 
+  let R; let G; let B;
+  let eachChar = []
+  for (let i of y) {
+    eachChar.push(i)
+  }
+  console.log(eachChar)
+  /* convert each letter to decimal value */
+  eachChar.forEach((char,index)=>{
+    switch (char) {
+        case 'a': eachChar[index] = 10; break;
+        case 'b': eachChar[index] = 11; break;
+        case 'c': eachChar[index] = 12; break;
+        case 'd': eachChar[index] = 13; break;
+        case 'e': eachChar[index] = 14; break;
+        case 'f': eachChar[index] = 15; break;
+        default: eachChar[index] = +(eachChar[index]);  break;
+    }
+  })
+  console.log(eachChar)
+  //Hexadecimal to decimal
+  if(len > 3){ //if we have our 6 digits/characters
+    //[0,1,2,3,4,5]
+    R = 16*eachChar[0] + eachChar[1];
+    G = 16*eachChar[2] + eachChar[3];
+    B = 16*eachChar[4] + eachChar[5];
+    console.log(R, G, B);
+  }
+  else{
+    //[0,1,2]
+    R = 16*eachChar[0] + eachChar[0];
+    G = 16*eachChar[1] + eachChar[1];
+    B = 16*eachChar[2] + eachChar[2];
+    console.log(R, G, B);
+  }
+}
+
 const handleToRGB = () => { 
   let y = checkHash(hexVal.value.toLowerCase().trim())
   console.log(y)
@@ -58,7 +96,8 @@ const handleToRGB = () => {
   }
   /* 3.4 what if they success */
   else if((len === 3 && rgx3.test(y)) || (len === 6 && rgx6.test(y))){
-    console.log('success')
+    // console.log('success')
+    convertToRGB(y,len)
   }
   // or if the user types anything else
   else{

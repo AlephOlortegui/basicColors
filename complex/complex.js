@@ -12,6 +12,13 @@ let booleanControl = true; // true means convert to RGB otherwise convert to HEx
 let hexVal = document.getElementById('hexVal');
 //3.3 setAlert
 let message = document.querySelector('.message');
+// 3.5 dom maniputaltion convertToRGB display results
+let current_hexVal = document.getElementById('current_hexVal')
+let board = document.querySelector('.board')
+let result = document.getElementById('result')
+let curr_R = document.getElementById('current_rValue')
+let curr_G = document.getElementById('current_gValue')
+let curr_B = document.getElementById('current_bValue')
 
 const focusFx = (i) => { i.parentNode.classList.add('focus') }
 const blurFx = (i) => { (!i.value) && i.parentNode.classList.remove('focus') }
@@ -80,6 +87,16 @@ const convertToRGB = (y,len) => {
     B = 16*eachChar[2] + eachChar[2];
     console.log(R, G, B);
   }
+  //Finally DOM
+  hexVal.value = '';
+  board.style.backgroundColor = `#${y}`;
+  current_hexVal.textContent = `#${y}`;
+  result.textContent = `rgb(${R},${G},${B})`;
+  blurFx(hexVal);
+  //if we click the checkbox
+  curr_R.textContent = `R-${R}`;
+  curr_G.textContent = `G-${G}`;
+  curr_B.textContent = `B-${B}`;
 }
 
 const handleToRGB = () => { 

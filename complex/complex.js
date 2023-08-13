@@ -64,40 +64,39 @@ const setAlert = (msm) => {
 
 /* 3.4 */
 const convertToRGB = (y,len) => { 
-  let R; let G; let B;
+  let rgb = ['R','G', 'B']
   let eachChar = []
+  let rgbObj ={}
   for (let i of y) {
     eachChar.push(i)
   }
   console.log(eachChar)
   /* convert each letter to decimal value */
-  eachChar.forEach((char,index)=>{
-    switch (char) {
-        case 'a': eachChar[index] = 10; break;
-        case 'b': eachChar[index] = 11; break;
-        case 'c': eachChar[index] = 12; break;
-        case 'd': eachChar[index] = 13; break;
-        case 'e': eachChar[index] = 14; break;
-        case 'f': eachChar[index] = 15; break;
-        default: eachChar[index] = +(eachChar[index]);  break;
-    }
-  })
+  const charToNumeric = {
+    'a': 10,
+    'b': 11,
+    'c': 12,
+    'd': 13,
+    'e': 14,
+    'f': 15
+  };
+  eachChar = eachChar.map(char => charToNumeric[char] !== undefined ? charToNumeric[char] : +char);
   console.log(eachChar)
   //Hexadecimal to decimal
   if(len > 3){ //if we have our 6 digits/characters
     //[0,1,2,3,4,5]
-    R = 16*eachChar[0] + eachChar[1];
-    G = 16*eachChar[2] + eachChar[3];
-    B = 16*eachChar[4] + eachChar[5];
-    console.log(R, G, B);
+    for (let i = 0; i < rgb.length; i++) {
+      rgbObj[rgb[i]] = 16*eachChar[i * 2] + eachChar[i * 2 + 1]
+    }
   }
   else{
     //[0,1,2]
-    R = 16*eachChar[0] + eachChar[0];
-    G = 16*eachChar[1] + eachChar[1];
-    B = 16*eachChar[2] + eachChar[2];
-    console.log(R, G, B);
+    for (let i = 0; i < rgb.length; i++) {
+      rgbObj[rgb[i]] = 16 * eachChar[i] + eachChar[i];
+    }
   }
+  console.log(rgbObj)
+  const {R, G, B} = rgbObj
   //Finally DOM
   hexVal.value = '';
   board.style.backgroundColor = `#${y}`;
@@ -143,17 +142,15 @@ const convertToHEX = (arrRGB) => {
       let r = i%16; //remainder
       myArr.push(q,r)
   })
-  myArr.forEach((y,index) =>{
-    switch(y){
-        case 10 : myArr[index] = 'A'; break;
-        case 11 : myArr[index] = 'B'; break;
-        case 12 : myArr[index] = 'C'; break;
-        case 13 : myArr[index] = 'D'; break;
-        case 14 : myArr[index] = 'E'; break;
-        case 15 : myArr[index] = 'F'; break;
-        default :   break;
-    }
-  });
+  const numericToChar = {
+     10:'A' ,
+     11:'B',
+     12:'C',
+     13:'D',
+     14:'E',
+     15:'F'
+  };
+  myArr = myArr.map(num => numericToChar[num] !== undefined ? numericToChar[num] : num);
   //Finally the DOM
   board.style.backgroundColor = `#${myArr.join('')}`;
   result.textContent = `#${myArr.join('')}`;
